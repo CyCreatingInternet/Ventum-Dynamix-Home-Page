@@ -39,12 +39,13 @@
     header {
       background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
                   url('background1.jpg') no-repeat center center / cover;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 20px;
+      position: relative;
     }
 
     header h1 {
@@ -56,7 +57,7 @@
 
     header p {
       font-size: 1.2em;
-      max-width: 90vw;
+      max-width: 700px;
       margin: 0 auto 30px;
       color: #d1d5db;
     }
@@ -81,18 +82,8 @@
     nav {
       position: fixed;
       top: 20px;
-      right: 20px;
-      z-index: 100;
-    }
-
-    .nav-toggle {
-      display: none;
-      cursor: pointer;
-      font-size: 1.8em;
-      color: white;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 50%;
-      padding: 8px 12px;
+      right: 30px;
+      z-index: 10;
     }
 
     nav ul {
@@ -171,14 +162,14 @@
       text-align: center;
     }
 
-    .feature {
+    .icon-grid .feature {
       background: #121826;
       padding: 30px;
       border-radius: 20px;
       transition: transform 0.3s;
     }
 
-    .feature:hover {
+    .icon-grid .feature:hover {
       transform: scale(1.05);
     }
 
@@ -195,6 +186,7 @@
       gap: 20px;
     }
 
+    /* Produktkarten */
     .product-card {
       position: relative;
       width: 280px;
@@ -254,12 +246,36 @@
       font-size: 1em;
     }
 
+    /* Overlay sichtbar wenn aktiv */
     .product-card.active .overlay {
       opacity: 1;
     }
 
+    /* Bild leicht skalieren bei aktivem Overlay */
     .product-card.active img {
       transform: scale(1.05);
+    }
+
+    /* Responsive Hochformat */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .product-card {
+        width: 90vw;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .product-card img {
+        height: 350px;
+      }
     }
 
     footer {
@@ -269,7 +285,8 @@
       color: #888;
     }
 
-    #vision-container {
+    /* Unsere Vision spezifisch */
+    #vision {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -277,7 +294,7 @@
       justify-content: center;
     }
 
-    #vision-container img {
+    #vision img {
       max-width: 400px;
       width: 100%;
       border-radius: 20px;
@@ -291,54 +308,24 @@
       line-height: 1.6;
     }
 
-    /* Responsive Styles */
     @media (max-width: 800px) {
-      #vision-container {
+      #vision {
         flex-direction: column;
       }
 
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        display: none;
+      #vision img {
+        max-width: 90vw;
       }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .nav-toggle {
-        display: inline-block;
-      }
-
-      .section-title {
-        font-size: 2em;
-      }
-
-      header h1 {
-        font-size: 2em;
-      }
-
-      header p {
-        font-size: 1em;
-      }
-
-      .product-card {
-        width: 90vw;
-        max-width: 350px;
-        margin: 0 auto;
-      }
-
-      .product-card img {
-        height: 350px;
+      
+      #vision-text {
+        max-width: 90vw;
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <div class="nav-toggle" id="nav-toggle">&#9776;</div>
-    <ul id="nav-menu">
+    <ul>
       <li><a href="#about">Über uns</a></li>
       <li><a href="#tech">Technologie</a></li>
       <li><a href="#products">Produkte</a></li>
@@ -349,7 +336,7 @@
   <header>
     <div>
       <h1>Ventum Dynamix</h1>
-      <p>Wir verwandeln Autobahnen in Energiequellen mit innovativen Windturbinen für eine saubere Zukunft.</p>
+      <p>Wir verwandeln Autobahnen in Energiequellen  mit innovativen Windturbinen für eine saubere Zukunft.</p>
       <a href="#about" class="btn-glow">Mehr erfahren</a>
     </div>
   </header>
@@ -441,9 +428,10 @@
     </div>
   </section>
 
+  <!-- Neu hinzugefügt: Unsere Vision -->
   <section id="vision">
     <h2 class="section-title">Unsere Vision</h2>
-    <div id="vision-container">
+    <div id="vision" style="flex-direction: row; display: flex; align-items: center; gap: 40px; justify-content: center; flex-wrap: wrap;">
       <img src="vision.png" alt="Unsere Vision" />
       <div id="vision-text">
         <p>Wir wollen die Welt verbessern und eigentlich verschwendete Energie nutzen, um nachhaltige und saubere Lösungen für morgen zu schaffen. Mit Ventum Dynamix verwandeln wir Fahrtwind in eine grüne Zukunft.</p>
@@ -457,7 +445,7 @@
     <p style="text-align: center;">
       <strong>Email:</strong> <a href="mailto:Ventum-Dynamix@business.com">Ventum-Dynamix@business.com</a>
     </p>
-    <p style="text-align: center;"><strong>Telefon:</strong> %</p>
+    <p style="text-align: center;"><strong>Telefon:</strong>%</p>
   </section>
 
   <footer>
@@ -465,22 +453,22 @@
   </footer>
 
   <script>
-    // Toggle Produktkarten
     document.querySelectorAll('.product-card').forEach(card => {
       card.addEventListener('click', () => {
-        card.classList.toggle('active');
+        if(card.classList.contains('active')){
+          card.classList.remove('active');
+        } else {
+          document.querySelectorAll('.product-card.active').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+        }
       });
     });
 
+    // Klick außerhalb schließt aktive Overlays
     document.body.addEventListener('click', (e) => {
       if (!e.target.closest('.product-card')) {
         document.querySelectorAll('.product-card.active').forEach(c => c.classList.remove('active'));
       }
-    });
-
-    // Navigation Toggle
-    document.getElementById('nav-toggle').addEventListener('click', () => {
-      document.getElementById('nav-menu').classList.toggle('active');
     });
   </script>
 </body>
