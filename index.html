@@ -284,6 +284,43 @@
       background: #111;
       color: #888;
     }
+
+    /* Unsere Vision spezifisch */
+    #vision {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    #vision img {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    #vision-text {
+      max-width: 600px;
+      color: #ddd;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      #vision {
+        flex-direction: column;
+      }
+
+      #vision img {
+        max-width: 90vw;
+      }
+      
+      #vision-text {
+        max-width: 90vw;
+      }
+    }
   </style>
 </head>
 <body>
@@ -387,6 +424,17 @@
         <i class="fas fa-recycle"></i>
         <h4>Wartungsarm</h4>
         <p>Langlebige Komponenten für geringen Aufwand & hohe Zuverlässigkeit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neu hinzugefügt: Unsere Vision -->
+  <section id="vision">
+    <h2 class="section-title">Unsere Vision</h2>
+    <div id="vision" style="flex-direction: row; display: flex; align-items: center; gap: 40px; justify-content: center; flex-wrap: wrap;">
+      <img src="vision.png" alt="Unsere Vision" />
+      <div id="vision-text">
+        <p>Wir wollen die Welt verbessern und eigentlich verschwendete Energie nutzen, um nachhaltige und saubere Lösungen für morgen zu schaffen. Mit Ventum Dynamix verwandeln wir Fahrtwind in eine grüne Zukunft.</p>
       </div>
     </div>
   </section>
