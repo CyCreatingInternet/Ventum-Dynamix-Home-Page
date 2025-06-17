@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ventum Dynamix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00c6ff;
+      --dark: #0a0f1c;
+      --text-light: #f3f4f6;
+      --text-dark: #1f2937;
+      --card-bg: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--text-light);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+                  url('background1.jpg') no-repeat center center / cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #d1d5db;
+    }
+
+    .btn-glow {
+      padding: 14px 30px;
+      background-color: var(--primary);
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1em;
+      color: #000;
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .btn-glow:hover {
+      background: #00a0dd;
+      box-shadow: 0 0 15px #00a0dd;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 10;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 60px;
+      color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #ccc;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .icon-grid .feature {
+      background: #121826;
+      padding: 30px;
+      border-radius: 20px;
+      transition: transform 0.3s;
+    }
+
+    .icon-grid .feature:hover {
+      transform: scale(1.05);
+    }
+
+    .feature i {
+      font-size: 2em;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 280px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #111;
+      color: #888;
+    }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#about">Über uns</a></li>
+      <li><a href="#tech">Technologie</a></li>
+      <li><a href="#products">Produkte</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <div>
+      <h1>Ventum Dynamix</h1>
+      <p>Wir verwandeln Autobahnen in Energiequellen  mit innovativen Windturbinen für eine saubere Zukunft.</p>
+      <a href="#about" class="btn-glow">Mehr erfahren</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">Über uns</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+      Ventum Dynamix entwickelt revolutionäre Windturbinen, die entlang von Autobahnen installiert werden und den Fahrtwind in Energie umwandeln. Unsere Mission: Grüne Energie durch intelligente Infrastruktur.
+    </p>
+  </section>
+
+<section id="tech">
+  <h2 class="section-title">Technologie</h2>
+  <div class="grid">
+    <div class="card" style="text-align: center;">
+      <i class="fas fa-brain" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
+      <h3>Hightech-Design</h3>
+      <p>Unsere Systeme kombinieren Effizienz mit futuristischem Design – robust, leicht & leistungsstark.</p>
+    </div>
+    <div class="card" style="text-align: center;">
+      <i class="fas fa-cogs" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
+      <h3>Intelligente Turbinen</h3>
+      <p>Optimiert für starke Luftströme entlang von Schnellstraßen – maximale Energie bei minimalem Widerstand.</p>
+    </div>
+    <div class="card" style="text-align: center;">
+      <i class="fas fa-leaf" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
+      <h3>Nachhaltigkeit</h3>
+      <p>100% erneuerbar, emissionsfrei, wartungsarm – so sieht echte Energiewende aus.</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="products">
+    <h2 class="section-title">Produkte</h2>
+    <div class="gallery">
+      <img src="windkanal.jpeg" alt="Windkanal-Modell">
+      <img src="windrad1.jpeg" alt="Windrad-Modell">
+      <img src="windrad2.jpeg" alt="Windrad-Einsatz">
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Unsere Vorteile</h2>
+    <div class="icon-grid">
+      <div class="feature">
+        <i class="fas fa-bolt"></i>
+        <h4>Energieeffizient</h4>
+        <p>Extrem hohe Ausbeute bei optimaler Nutzung bestehender Infrastruktur.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-road"></i>
+        <h4>Integriert</h4>
+        <p>Keine zusätzliche Fläche nötig – perfekt für Straßenränder & Mittelstreifen.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-globe-europe"></i>
+        <h4>Global anwendbar</h4>
+        <p>Skalierbar für jede Region mit Verkehr – weltweit nutzbar.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-recycle"></i>
+        <h4>Wartungsarm</h4>
+        <p>Langlebige Komponenten für geringen Aufwand & hohe Zuverlässigkeit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Kontakt</h2>
+    <p style="text-align: center;">Sie möchten mehr erfahren oder mit uns zusammenarbeiten?</p>
+    <p style="text-align: center;"><strong>Email:</strong> <a href="https://www.youtube.com">Ventum-Dynamix@business.com</a></p>
+    <p style="text-align: center;"><strong>Telefon:</strong> 110</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Ventum Dynamix. Alle Rechte vorbehalten.
+  </footer>
+
+</body>
+</html>
