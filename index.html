@@ -477,6 +477,20 @@
   </footer>
 
   <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Menü schließen beim Klick auf Link (mobile)
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
     document.querySelectorAll('.product-card').forEach(card => {
       card.addEventListener('click', () => {
         if(card.classList.contains('active')){
