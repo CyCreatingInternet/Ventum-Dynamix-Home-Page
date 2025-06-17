@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ventum Dynamix</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
       --primary: #00c6ff;
@@ -186,27 +186,78 @@
       gap: 20px;
     }
 
-    .gallery img {
+    /* Produktkarten */
+    .product-card {
+      position: relative;
       width: 280px;
-      height: 200px;
-      object-fit: cover;
+      cursor: pointer;
       border-radius: 15px;
+      overflow: hidden;
+      background: var(--card-bg);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       transition: transform 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    .gallery img:hover {
+    .product-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 15px 15px 0 0;
+      transition: transform 0.3s ease;
+    }
+
+    .product-name {
+      padding: 10px 0 15px 0;
+      font-weight: 600;
+      font-size: 1.2em;
+      color: #fff;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 15px 15px 0 0;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .overlay h3 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+
+    .overlay p {
+      margin-bottom: 8px;
+      font-size: 1em;
+    }
+
+    /* Overlay sichtbar wenn aktiv */
+    .product-card.active .overlay {
+      opacity: 1;
+    }
+
+    /* Bild leicht skalieren bei aktivem Overlay */
+    .product-card.active img {
       transform: scale(1.05);
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #111;
-      color: #888;
-    }
-
-    @media(max-width: 600px) {
+    /* Responsive Hochformat */
+    @media (max-width: 600px) {
       header h1 {
         font-size: 2.2em;
       }
@@ -215,11 +266,27 @@
         flex-direction: column;
         gap: 10px;
       }
+
+      .product-card {
+        width: 90vw;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .product-card img {
+        height: 350px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #111;
+      color: #888;
     }
   </style>
 </head>
 <body>
-
   <nav>
     <ul>
       <li><a href="#about">Über uns</a></li>
@@ -244,34 +311,57 @@
     </p>
   </section>
 
-<section id="tech">
-  <h2 class="section-title">Technologie</h2>
-  <div class="grid">
-    <div class="card" style="text-align: center;">
-      <i class="fas fa-brain" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
-      <h3>Hightech-Design</h3>
-      <p>Unsere Systeme kombinieren Effizienz mit futuristischem Design – robust, leicht & leistungsstark.</p>
+  <section id="tech">
+    <h2 class="section-title">Technologie</h2>
+    <div class="grid">
+      <div class="card" style="text-align: center;">
+        <i class="fas fa-brain" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
+        <h3>Hightech-Design</h3>
+        <p>Unsere Systeme kombinieren Effizienz mit futuristischem Design, robust, leicht & leistungsstark.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <i class="fas fa-cogs" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
+        <h3>Intelligente Turbinen</h3>
+        <p>Optimiert für starke Luftströme entlang von Schnellstraßen, maximale Energie bei minimalem Widerstand.</p>
+      </div>
+      <div class="card" style="text-align: center;">
+        <i class="fas fa-leaf" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
+        <h3>Nachhaltigkeit</h3>
+        <p>100% erneuerbar, emissionsfrei, wartungsarm, so sieht echte Energiewende aus.</p>
+      </div>
     </div>
-    <div class="card" style="text-align: center;">
-      <i class="fas fa-cogs" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
-      <h3>Intelligente Turbinen</h3>
-      <p>Optimiert für starke Luftströme entlang von Schnellstraßen – maximale Energie bei minimalem Widerstand.</p>
-    </div>
-    <div class="card" style="text-align: center;">
-      <i class="fas fa-leaf" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
-      <h3>Nachhaltigkeit</h3>
-      <p>100% erneuerbar, emissionsfrei, wartungsarm – so sieht echte Energiewende aus.</p>
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <section id="products">
     <h2 class="section-title">Produkte</h2>
     <div class="gallery">
-      <img src="windkanal.jpeg" alt="Windkanal-Modell">
-      <img src="windrad1.jpeg" alt="Windrad-Modell">
-      <img src="windrad2.jpeg" alt="Windrad-Einsatz">
+      <div class="product-card">
+        <img src="windkanal.jpeg" alt="Windkanal-Modell" />
+        <div class="overlay">
+          <h3>Windkanal Modell</h3>
+          <p>Preis: 100€</p>
+          <p>Ein präzises Windkanalmodell zur Effizienzsteigerung der Turbinen.</p>
+        </div>
+        <div class="product-name">Windkanal Modell</div>
+      </div>
+      <div class="product-card">
+        <img src="windrad1.jpeg" alt="Windrad-Modell" />
+        <div class="overlay">
+          <h3>Windrad Modell</h3>
+          <p>Preis: 200€</p>
+          <p>Robustes Windrad mit hohem Wirkungsgrad für Autobahnanlagen.</p>
+        </div>
+        <div class="product-name">Windrad Modell 1</div>
+      </div>
+      <div class="product-card">
+        <img src="windrad2.jpeg" alt="Windrad Einsatz" />
+        <div class="overlay">
+          <h3>Windrad Modell</h3>
+          <p>Preis: 420€</p>
+          <p>Innovative Turbine, die Fahrtwind optimal in Energie umwandelt.</p>
+        </div>
+        <div class="product-name">Windrad Einsatz</div>
+      </div>
     </div>
   </section>
 
@@ -304,13 +394,34 @@
   <section id="contact">
     <h2 class="section-title">Kontakt</h2>
     <p style="text-align: center;">Sie möchten mehr erfahren oder mit uns zusammenarbeiten?</p>
-    <p style="text-align: center;"><strong>Email:</strong> <a href="https://www.youtube.com">Ventum-Dynamix@business.com</a></p>
-    <p style="text-align: center;"><strong>Telefon:</strong>%%</p>
+    <p style="text-align: center;">
+      <strong>Email:</strong> <a href="mailto:Ventum-Dynamix@business.com">Ventum-Dynamix@business.com</a>
+    </p>
+    <p style="text-align: center;"><strong>Telefon:</strong>%</p>
   </section>
 
   <footer>
     &copy; 2025 Ventum Dynamix. Alle Rechte vorbehalten.
   </footer>
 
+  <script>
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        if(card.classList.contains('active')){
+          card.classList.remove('active');
+        } else {
+          document.querySelectorAll('.product-card.active').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+        }
+      });
+    });
+
+    // Klick außerhalb schließt aktive Overlays
+    document.body.addEventListener('click', (e) => {
+      if (!e.target.closest('.product-card')) {
+        document.querySelectorAll('.product-card.active').forEach(c => c.classList.remove('active'));
+      }
+    });
+  </script>
 </body>
 </html>
