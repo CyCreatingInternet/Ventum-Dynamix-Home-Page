@@ -321,11 +321,35 @@
         max-width: 90vw;
       }
     }
+	      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        display: none;
+        background: rgba(20, 20, 20, 0.7);
+        padding: 15px 20px;
+        border-radius: 15px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 180px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: inline-block;
+      }
+
   </style>
 </head>
 <body>
   <nav>
-    <ul>
+    <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+    <ul id="nav-menu">
       <li><a href="#about">Über uns</a></li>
       <li><a href="#tech">Technologie</a></li>
       <li><a href="#products">Produkte</a></li>
