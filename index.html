@@ -216,6 +216,29 @@
       border-radius: 15px 15px 0 0;
       transition: transform 0.3s ease;
     }
+    .product-card-2 {
+      position: relative;
+      width: 280px;
+      cursor: pointer;
+      border-radius: 15px;
+      overflow: hidden;
+      background: var(--card-bg);
+      box-shadow: 0 4px 20px rgba(128, 244, 253, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      margin-left: 38%;
+      margin-top: 3%;
+    }
+
+    .product-card-2 img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 15px 15px 0 0;
+      transition: transform 0.3s ease;
+    }
 
     .product-name {
       padding: 10px 0 15px 0;
@@ -371,7 +394,7 @@
 	  <br>
 	  <br>
 	  <br>
-      <p>Wir verwandeln Autobahnen in Energiequellen  mit innovativen Windturbinen für eine saubere Zukunft.</p>
+      <p>Wir verwandeln Autobahnen und Zugstrecken in Energiequellen  mit innovativen Windturbinen für eine saubere Zukunft.</p>
       <a href="#about" class="btn-glow">Mehr erfahren</a>
     </div>
   </header>
@@ -379,7 +402,7 @@
   <section id="about">
     <h2 class="section-title">Über uns</h2>
     <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-     Ventum Dynamix entwickelt revolutionäre Windturbinen, die entlang von Autobahnen und Zugstrecken installiert werden und den Fahrtwind in Energie umwandeln. Unsere Mission: Grüne Energie durch intelligente Infrastruktur. Wir arbeiten nun seite fast einem Jahr an dieser Mission mit einem dreiköpfigem Team aus jungen Entwicklern.
+      Ventum Dynamix entwickelt revolutionäre Windturbinen, die entlang von Autobahnen und Zugstrecken installiert werden und den Fahrtwind in Energie umwandeln. Unsere Mission: Grüne Energie durch intelligente Infrastruktur. Wir arbeiten nun seite fast einem Jahr an dieser Mission mit einem dreiköpfigem Team aus jungen Entwicklern.
     </p>
   </section>
 
@@ -411,7 +434,7 @@
         <img src="windkanal.jpeg" alt="Windkanal-Modell" />
         <div class="overlay">
           <h3>Windkanal Modell</h3>
-          <p>Preis: comming soon</p>
+          <p>Preis: 100€</p>
           <p>Ein präzises Windkanalmodell zur Effizienzsteigerung der Turbinen.</p>
         </div>
         <div class="product-name">Windkanal Modell</div>
@@ -419,22 +442,31 @@
       <div class="product-card">
         <img src="windrad1.jpeg" alt="Windrad-Modell" />
         <div class="overlay">
-          <h3>VentraX - Prototyp</h3>
-          <p>Preis: comming soon</p>
+          <h3>Prototyp</h3>
+          <p>Preis: 200€</p>
           <p>Robustes Windrad mit hohem Wirkungsgrad für Autobahnanlagen. Noch nicht vollständig optimiert.</p>
         </div>
-        <div class="product-name">VentraX</div>
+        <div class="product-name">Windrad Modell 1</div>
       </div>
       <div class="product-card">
         <img src="windrad2.jpeg" alt="Windrad Einsatz" />
         <div class="overlay">
-          <h3>EcoSpin</h3>
-          <p>Preis: comming soon</p>
+          <h3>Windrad Modell</h3>
+          <p>Preis: 420€</p>
           <p>Innovative Turbine, die Fahrtwind optimal in Energie umwandelt.</p>
         </div>
-        <div class="product-name">EcoSpin</div>
+        <div class="product-name">Windrad Einsatz</div>
       </div>
     </div>
+        <div class="product-card-2">
+        <img src="Screenshot (38).png" alt="Windkanal-Modell" />
+        <div class="overlay">
+          <h3>Coming Soon</h3>
+          <p>Coming Soon</p>
+          <p>Coming Soon</p>
+        </div>
+        <div class="product-name">Coming Soon</div>
+      </div>
   </section>
 
   <section>
@@ -443,17 +475,17 @@
       <div class="feature">
         <i class="fas fa-bolt"></i>
         <h4>Energieeffizient</h4>
-        <p>Extreme Energiegewinnung bei optimaler Nutzung bestehender Infrastruktur.</p>
+        <p>Extrem hohe Ausbeute bei optimaler Nutzung bestehender Infrastruktur.</p>
       </div>
       <div class="feature">
         <i class="fas fa-road"></i>
         <h4>Integriert</h4>
-        <p>Keine zusätzliche Fläche nötig, perfekt für Straßenränder & Mittelstreifen.</p>
+        <p>Keine zusätzliche Fläche nötig – perfekt für Straßenränder & Mittelstreifen.</p>
       </div>
       <div class="feature">
         <i class="fas fa-globe-europe"></i>
         <h4>Global anwendbar</h4>
-        <p>Skalierbar für jede Region mit Verkehr, weltweit nutzbar.</p>
+        <p>Skalierbar für jede Region mit Verkehr – weltweit nutzbar.</p>
       </div>
       <div class="feature">
         <i class="fas fa-recycle"></i>
@@ -469,13 +501,7 @@
     <div id="vision" style="flex-direction: row; display: flex; align-items: center; gap: 40px; justify-content: center; flex-wrap: wrap;">
       <img src="vision.png" alt="Unsere Vision" />
       <div id="vision-text">
-        <p>Wir bei Ventum Dynamix glauben an eine Zukunft, in der Energie nicht nur aus großen Kraftwerken stammt, sondern dezentral, effizient und intelligent dort erzeugt wird, wo sie gebraucht wird – mitten im Alltag. Unsere Vision ist es, Bewegung in Energie zu verwandeln. Millionen Fahrzeuge sind täglich auf Straßen und Schienen unterwegs und erzeugen dabei Luftverwirbelungen, die bisher ungenutzt bleiben. Wir wollen das ändern.
-
-Stellen Sie sich eine Welt vor, in der jede Autobahn zu einem grünen Band der Energieerzeugung wird. Wo die Infrastruktur, die uns verbindet, gleichzeitig zur Stromquelle wird. Wo Energie nicht mit Umweltzerstörung verbunden ist, sondern mit Innovation, Eleganz und Nachhaltigkeit.
-
-Unsere Vision geht über reine Stromproduktion hinaus. Wir möchten zeigen, dass die Energiewende nicht nur durch Großprojekte gelingt, sondern durch smarte, greifbare Lösungen direkt im urbanen Raum. Unsere Turbinen sollen nicht nur Strom liefern, sondern auch ein Symbol für Verantwortung und Wandel sein.
-
-In Zukunft sehen wir unsere Systeme an Hochgeschwindigkeitsstrecken, in Tunnelwänden, an Schnellstraßen und Flughafenzufahrten. Überall dort, wo Bewegung entsteht, kann auch Energie entstehen. Wir träumen von Städten, die Energie nicht nur verbrauchen, sondern sie auf kreative Weise erzeugen.</p>
+        <p>Wir wollen die Welt verbessern und eigentlich verschwendete Energie nutzen, um nachhaltige und saubere Lösungen für morgen zu schaffen. Mit Ventum Dynamix verwandeln wir Fahrtwind in eine grüne Zukunft.</p>
       </div>
     </div>
   </section>
@@ -484,11 +510,9 @@ In Zukunft sehen wir unsere Systeme an Hochgeschwindigkeitsstrecken, in Tunnelw�
     <h2 class="section-title">Kontakt</h2>
     <p style="text-align: center;">Sie möchten mehr erfahren oder mit uns zusammenarbeiten?</p>
     <p style="text-align: center;">
-	    <br>
-	    <br>
       <strong>Email:</strong> <a href="mailto:Ventum-Dynamix@business.com">Ventum-Dynamix@business.com</a>
     </p>
-    <p style="text-align: center;"><strong>Telefon:</strong> No Number</p>
+    <p style="text-align: center;"><strong>Telefon:</strong>%</p>
   </section>
 
   <footer>
