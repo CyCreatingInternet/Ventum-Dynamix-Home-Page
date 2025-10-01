@@ -9,375 +9,170 @@
   <style>
     :root {
       --primary: #00c6ff;
+      --secondary: #00bfae;
       --dark: #0a0f1c;
       --text-light: #f3f4f6;
-      --text-dark: #1f2937;
-      --card-bg: rgba(255, 255, 255, 0.07);
+      --card-bg: rgba(255, 255, 255, 0.06);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--dark);
       color: var(--text-light);
+      overflow-x: hidden;
     }
+    a {color: inherit; text-decoration: none;}
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    /* Header */
+    header {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+                  url('background1.jpg') no-repeat center center / cover;
+      height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 20px; position: relative;
+      animation: fadeIn 1.5s ease;
     }
-
-   header {
-	  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
-				  url('background1.jpg') no-repeat center center / cover;
-	  height: 100vh;
-	  height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-      position: relative;
-	}
-
-	@media (max-width: 600px) {
-	  header {
-		background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
-					url('background-mobile.jpg') no-repeat center center / cover;
-	  }
-	}
-
+    @media(max-width: 600px){
+      header {background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+                        url('background-mobile.jpg') no-repeat center center / cover;}
+    }
+    @keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
     header h1 {
-      font-size: 4.2em;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 20px;
+      font-size: 4em; font-weight: 800; color: #fff;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+    header p {font-size: 1.2em; max-width: 700px; margin: 20px auto; color: #d1d5db;}
+.btn-glow {
+  padding: 14px 34px;
+  border-radius: 50px;
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #000;
+  font-size: 1.1em;
+  border: none;
+  margin-top: 5%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 
-    header p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      color: #d1d5db;
-    }
+  /* Grund-Glow */
+  box-shadow: 0 0 12px var(--primary), 0 0 22px var(--secondary);
 
-    .btn-glow {
-      padding: 14px 30px;
-      background-color: var(--primary);
-      border: none;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 1em;
-      color: #000;
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-      transition: all 0.3s ease;
-    }
+  /* Animation */
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  transition: transform .3s ease-in-out;
+}
 
-    .btn-glow:hover {
-      background: #00a0dd;
-      box-shadow: 0 0 15px #00a0dd;
-    }
+.btn-glow:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px var(--secondary), 0 0 40px var(--primary);
+}
 
-    nav {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      z-index: 10;
-    }
+/* Pulsierendes Glow */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 12px var(--primary), 0 0 22px var(--secondary);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--secondary), 0 0 45px var(--primary);
+  }
+  100% {
+    box-shadow: 0 0 12px var(--primary), 0 0 22px var(--secondary);
+  }
+}
 
+
+    /* Navigation */
+    nav {position: fixed; top: 20px; right: 30px; z-index: 100;}
     nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      background: rgba(0,0,0,0.6);
-      padding: 10px 20px;
-      border-radius: 30px;
-      backdrop-filter: blur(10px);
+      list-style: none; display: flex; gap: 20px;
+      background: rgba(0,0,0,0.6); padding: 10px 20px; border-radius: 30px;
+      backdrop-filter: blur(10px); transition: all .3s ease;
     }
+    nav a {color: #fff; font-weight: 600;}
+    nav a:hover {color: var(--primary);}
+    .nav-toggle {display: none; color: #fff; font-size: 1.6em; cursor: pointer;}
 
-    nav a {
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-    }
-
+    /* Sections */
     section {
-      padding: 100px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 100px 20px; max-width: 1200px; margin: 0 auto;
+      animation: fadeUp 1.2s ease;
     }
-
+    @keyframes fadeUp {from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);}}
     .section-title {
-      font-size: 2.5em;
-      text-align: center;
-      margin-bottom: 60px;
-      color: var(--primary);
+      font-size: 2.5em; text-align: center; margin-bottom: 60px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
+    /* Cards */
     .grid {
-      display: grid;
-      gap: 40px;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      display: grid; gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-
     .card {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      background: var(--card-bg); padding: 25px; border-radius: 20px;
+      backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center;
     }
+    .card:hover {transform: translateY(-6px); box-shadow: 0 6px 26px rgba(0,0,0,0.5);}
+    .card i {font-size: 3em; color: var(--primary); margin-bottom: 20px;}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 12px;
-      height: 200px;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #ccc;
-    }
-
-    .icon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      text-align: center;
-    }
-
-    .icon-grid .feature {
-      background: #121826;
-      padding: 30px;
-      border-radius: 20px;
-      transition: transform 0.3s;
-    }
-
-    .icon-grid .feature:hover {
-      transform: scale(1.05);
-    }
-
-    .feature i {
-      font-size: 2em;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
+    /* Produkte */
     .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;
     }
-
-    /* Produktkarten */
     .product-card {
-      position: relative;
-      width: 280px;
-      cursor: pointer;
-      border-radius: 15px;
-      overflow: hidden;
-      background: var(--card-bg);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s ease;
+      position: relative; width: 280px; border-radius: 18px;
+      overflow: hidden; background: var(--card-bg);
+      backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      transition: transform .3s ease, box-shadow .3s ease;
+      cursor: pointer; text-align: center;
     }
-
+    .product-card:hover {transform: scale(1.05); box-shadow: 0 6px 26px rgba(0,255,255,.3);}
     .product-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 15px 15px 0 0;
-      transition: transform 0.3s ease;
+      width: 100%; height: 220px; object-fit: cover; border-radius: 18px 18px 0 0;
     }
-    .product-card-2 {
-      position: relative;
-      width: 280px;
-      cursor: pointer;
-      border-radius: 15px;
-      overflow: hidden;
-      background: var(--card-bg);
-      box-shadow: 0 4px 20px rgba(128, 244, 253, 0.5);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s ease;
-      margin-left: 38%;
-      margin-top: 3%;
-    }
-
-    .product-card-2 img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 15px 15px 0 0;
-      transition: transform 0.3s ease;
-    }
-
-    .product-name {
-      padding: 10px 0 15px 0;
-      font-weight: 600;
-      font-size: 1.2em;
-      color: #fff;
-      text-align: center;
-    }
-
+    .product-name {padding: 12px; font-weight: 600; font-size: 1.1em;}
     .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.75);
-      color: #fff;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-radius: 15px 15px 0 0;
-      text-align: center;
-      z-index: 10;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); color: #fff; opacity: 0;
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: center; padding: 20px; border-radius: 18px; transition: opacity .3s;
     }
+    .product-card.active .overlay {opacity: 1;}
 
-    .overlay h3 {
-      margin-bottom: 10px;
-      font-size: 1.5em;
+    /* Features */
+    .icon-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px; text-align: center;}
+    .feature {background: #121826; padding: 30px; border-radius: 20px; transition: .3s;}
+    .feature:hover {transform: scale(1.05); box-shadow: 0 0 20px rgba(0,200,255,0.4);}
+    .feature i {font-size: 2.5em; color: var(--secondary); margin-bottom: 12px;}
+
+    /* Vision */
+    #vision {display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center;}
+    #vision img {max-width: 420px; width: 100%; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);}
+    #vision-text {max-width: 600px; line-height: 1.6; color: #ddd;}
+
+    /* Footer */
+    footer {text-align: center; padding: 40px 20px;
+      background: linear-gradient(to right, var(--dark), #111); color: #aaa; margin-top: 60px;}
+    footer a {color: var(--primary); margin: 0 10px; font-size: 1.4em;}
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      header h1 {font-size: 2.5em;}
+      nav ul {flex-direction: column; display: none; position: absolute; top: 50px; right: 0;}
+      nav ul.active {display: flex;}
+      .nav-toggle {display: inline-block;}
     }
-
-    .overlay p {
-      margin-bottom: 8px;
-      font-size: 1em;
-    }
-
-    /* Overlay sichtbar wenn aktiv */
-    .product-card.active .overlay {
-      opacity: 1;
-    }
-
-    /* Bild leicht skalieren bei aktivem Overlay */
-    .product-card.active img {
-      transform: scale(1.05);
-    }
-
-    /* Responsive Hochformat */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2em;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .product-card {
-        width: 90vw;
-        max-width: 350px;
-        margin: 0 auto;
-      }
-
-      .product-card img {
-        height: 350px;
-      }
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #111;
-      color: #888;
-    }
-
-    /* Unsere Vision spezifisch */
-    #vision {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-      justify-content: center;
-    }
-
-    #vision img {
-      max-width: 400px;
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    #vision-text {
-      max-width: 600px;
-      color: #ddd;
-      font-size: 1.1em;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 800px) {
-      #vision {
-        flex-direction: column;
-      }
-
-      #vision img {
-        max-width: 90vw;
-      }
-      
-      #vision-text {
-        max-width: 90vw;
-      }
-    }
-	      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        display: none;
-        background: rgba(20, 20, 20, 0.7);
-        padding: 15px 20px;
-        border-radius: 15px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        position: absolute;
-        top: 50px;
-        right: 0;
-        width: 180px;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .nav-toggle {
-        display: inline-block;
-      }
-
   </style>
 </head>
 <body>
+  <!-- Navigation -->
   <nav>
     <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
     <ul id="nav-menu">
@@ -388,184 +183,116 @@
     </ul>
   </nav>
 
+  <!-- Header -->
   <header>
     <div>
       <h1>Ventum Dynamix</h1>
-	  <br>
-	  <br>
-	  <br>
-      <p>Wir verwandeln Autobahnen und Zugstrecken in Energiequellen  mit innovativen Windturbinen für eine saubere Zukunft.</p>
+      <p>Wir verwandeln Autobahnen und Zugstrecken in Energiequellen mit innovativen Windturbinen für eine saubere Zukunft.</p>
+      <br>
+      <br>
       <a href="#about" class="btn-glow">Mehr erfahren</a>
     </div>
   </header>
 
+  <!-- Über uns -->
   <section id="about">
     <h2 class="section-title">Über uns</h2>
     <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-      Ventum Dynamix entwickelt revolutionäre Windturbinen, die entlang von Autobahnen und Zugstrecken installiert werden und den Fahrtwind in Energie umwandeln. Unsere Mission: Grüne Energie durch intelligente Infrastruktur. Wir arbeiten nun seite fast einem Jahr an dieser Mission mit einem dreiköpfigem Team aus jungen Entwicklern.
+     Ventum Dynamix entwickelt Windturbinen, die entlang von Autobahnen und Bahnstrecken installiert werden können. Unsere Technologie nutzt den Fahrtwind von Fahrzeugen und Zügen und wandelt ihn in saubere, erneuerbare Energie um.
+Dabei setzen wir auf intelligente Lösungen, die sich nahtlos in bestehende Infrastrukturen einfügen. Anstatt zusätzlichen Platz zu beanspruchen oder die Natur zu belasten, arbeiten unsere Systeme dort, wo Energiepotenziale ohnehin vorhanden sind.
+Seit fast einem Jahr forschen und entwickeln wir an dieser Idee. Unser Team besteht aus zwei jungen Entwicklern, die mit Leidenschaft, technischem Know-how und Innovationsgeist daran arbeiten, eine nachhaltige und praktikable Lösung für die Energieversorgung von morgen zu schaffen.
     </p>
   </section>
 
+  <!-- Technologie -->
   <section id="tech">
     <h2 class="section-title">Technologie</h2>
     <div class="grid">
-      <div class="card" style="text-align: center;">
-        <i class="fas fa-brain" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
-        <h3>Hightech-Design</h3>
-        <p>Unsere Systeme kombinieren Effizienz mit futuristischem Design, robust, leicht & leistungsstark.</p>
+      <div class="card"><i class="fas fa-brain"></i><h3>Hightech-Design</h3><p>Effizienz trifft auf futuristisches Design – robust, leicht & leistungsstark.</p></div>
+      <div class="card"><i class="fas fa-cogs"></i><h3>Intelligente Turbinen</h3><p>Optimiert für starke Luftströme, maximale Energie bei minimalem Widerstand.</p></div>
+      <div class="card"><i class="fas fa-leaf"></i><h3>Nachhaltigkeit</h3><p>100% erneuerbar, emissionsfrei, wartungsarm – echte Energiewende.</p></div>
+    </div>
+  </section>
+
+  <!-- Produkte -->
+  <section id="products">
+    <h2 class="section-title">Produkte</h2>
+    <div class="gallery">
+      <div class="product-card">
+        <img src="windkanal.jpeg" alt="Windkanal Modell">
+        <div class="overlay"><h3>Windkanal Modell</h3><p>Preis: 100€</p><p>Zur Effizienzsteigerung unserer Turbinen.</p></div>
+        <div class="product-name">Windkanal Modell</div>
       </div>
-      <div class="card" style="text-align: center;">
-        <i class="fas fa-cogs" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
-        <h3>Intelligente Turbinen</h3>
-        <p>Optimiert für starke Luftströme entlang von Schnellstraßen, maximale Energie bei minimalem Widerstand.</p>
+      <div class="product-card">
+        <img src="windrad1.jpeg" alt="Prototyp">
+        <div class="overlay"><h3>Prototyp</h3><p>Preis: 200€</p><p>Robustes Windrad für Autobahnanlagen.</p></div>
+        <div class="product-name">Windrad Modell 1</div>
       </div>
-      <div class="card" style="text-align: center;">
-        <i class="fas fa-leaf" style="font-size: 4em; color: var(--primary); margin-bottom: 20px;"></i>
-        <h3>Nachhaltigkeit</h3>
-        <p>100% erneuerbar, emissionsfrei, wartungsarm, so sieht echte Energiewende aus.</p>
+      <div class="product-card">
+        <img src="windrad2.jpeg" alt="Einsatz">
+        <div class="overlay"><h3>Windrad Einsatz</h3><p>Preis: 420€</p><p>Optimale Fahrtwind-Energieumwandlung.</p></div>
+        <div class="product-name">Windrad Einsatz</div>
+      </div>
+      <div class="product-card">
+        <img src="Screenshot (38).png" alt="Vier Rotorblätter">
+        <div class="overlay"><h3>4Wing Prototyp</h3><p>Preis: Coming Soon</p></div>
+        <div class="product-name">4Wing Prototyp</div>
+      </div>
+      <div class="product-card">
+        <img src="Screenshot (39).png" alt="Zwei Rotorblätter">
+        <div class="overlay"><h3>2Wing Prototyp</h3><p>Preis: Coming Soon</p></div>
+        <div class="product-name">2Wing Prototyp</div>
       </div>
     </div>
   </section>
 
-  <div class="gallery">
-  <div class="product-card">
-    <img src="windkanal.jpeg" alt="Windkanal-Modell" />
-    <div class="overlay">
-      <h3>Windkanal Modell</h3>
-      <p>Preis: 100€</p>
-      <p>Ein präzises Windkanalmodell zur Effizienzsteigerung der Turbinen.</p>
-    </div>
-    <div class="product-name">Windkanal Modell</div>
-  </div>
-
-  <div class="product-card">
-    <img src="windrad1.jpeg" alt="Windrad-Modell" />
-    <div class="overlay">
-      <h3>Prototyp</h3>
-      <p>Preis: 200€</p>
-      <p>Robustes Windrad mit hohem Wirkungsgrad für Autobahnanlagen. Noch nicht vollständig optimiert.</p>
-    </div>
-    <div class="product-name">Windrad Modell 1</div>
-  </div>
-
-  <div class="product-card">
-    <img src="windrad2.jpeg" alt="Windrad Einsatz" />
-    <div class="overlay">
-      <h3>Windrad Modell</h3>
-      <p>Preis: 420€</p>
-      <p>Innovative Turbine, die Fahrtwind optimal in Energie umwandelt.</p>
-    </div>
-    <div class="product-name">Windrad Einsatz</div>
-  </div>
-
-  <!-- NEUES PRODUKT 1 -->
-  <div class="product-card">
-    <img src="Screenshot (38).png" alt="Smart Sensor" />
-    <div class="overlay">
-      <h3>vier Rotorblätter</h3>
-      <p>Preis: coming soon</p>
-      <p>coming soon</p>
-    </div>
-    <div class="product-name">4Wing Prototyp</div>
-  </div>
-
-  <!-- NEUES PRODUKT 2 -->
-  <div class="product-card">
-    <img src="Screenshot (39).png" alt="Mini-Turbine" />
-    <div class="overlay">
-      <h3>zwei Rotorblätter</h3>
-      <p>Preis: coming soon</p>
-      <p>Coming soon</p>
-    </div>
-    <div class="product-name">2Wing Prototyp</div>
-  </div>
-</div>
-
-<!-- Coming Soon bleibt erhalten -->
-
-
+  <!-- Vorteile -->
   <section>
     <h2 class="section-title">Unsere Vorteile</h2>
     <div class="icon-grid">
-      <div class="feature">
-        <i class="fas fa-bolt"></i>
-        <h4>Energieeffizient</h4>
-        <p>Extrem hohe Ausbeute bei optimaler Nutzung bestehender Infrastruktur.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-road"></i>
-        <h4>Integriert</h4>
-        <p>Keine zusätzliche Fläche nötig – perfekt für Straßenränder & Mittelstreifen.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-globe-europe"></i>
-        <h4>Global anwendbar</h4>
-        <p>Skalierbar für jede Region mit Verkehr – weltweit nutzbar.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-recycle"></i>
-        <h4>Wartungsarm</h4>
-        <p>Langlebige Komponenten für geringen Aufwand & hohe Zuverlässigkeit.</p>
-      </div>
+      <div class="feature"><i class="fas fa-bolt"></i><h4>Energieeffizient</h4><p>Hohe Ausbeute durch vorhandene Infrastruktur.</p></div>
+      <div class="feature"><i class="fas fa-road"></i><h4>Integriert</h4><p>Kein zusätzlicher Flächenverbrauch – ideal für Straßenränder.</p></div>
+      <div class="feature"><i class="fas fa-globe-europe"></i><h4>Global</h4><p>Skalierbar für jede Region mit Verkehr.</p></div>
+      <div class="feature"><i class="fas fa-recycle"></i><h4>Wartungsarm</h4><p>Langlebig und zuverlässig.</p></div>
     </div>
   </section>
 
-  <!-- Neu hinzugefügt: Unsere Vision -->
+  <!-- Vision -->
   <section id="vision">
     <h2 class="section-title">Unsere Vision</h2>
-    <div id="vision" style="flex-direction: row; display: flex; align-items: center; gap: 40px; justify-content: center; flex-wrap: wrap;">
+    <div id="vision">
       <img src="vision.png" alt="Unsere Vision" />
-      <div id="vision-text">
-        <p>Wir wollen die Welt verbessern und eigentlich verschwendete Energie nutzen, um nachhaltige und saubere Lösungen für morgen zu schaffen. Mit Ventum Dynamix verwandeln wir Fahrtwind in eine grüne Zukunft.</p>
-      </div>
+      <div id="vision-text"><p>Wir bei Ventum Dynamix sehen eine Zukunft, in der Energie dort entsteht, wo sie gebraucht wird – intelligent, nachhaltig und ohne zusätzliche Belastung für unsere Umwelt.
+Unsere Vision ist es, die Kraft des Fahrtwinds in eine neue Quelle grüner Energie zu verwandeln. Straßen und Bahnstrecken sollen nicht länger nur Verkehrswege sein, sondern zugleich Orte der Energiegewinnung. So entsteht ein Netzwerk, das Mobilität und Nachhaltigkeit miteinander verbindet.
+Wir möchten mit unserer Technologie einen Beitrag zu einer Welt leisten, in der bestehende Infrastrukturen effizienter genutzt werden und erneuerbare Energien selbstverständlich zum Alltag gehören.</p></div>
     </div>
   </section>
 
+  <!-- Kontakt -->
   <section id="contact">
     <h2 class="section-title">Kontakt</h2>
     <p style="text-align: center;">Sie möchten mehr erfahren oder mit uns zusammenarbeiten?</p>
-    <p style="text-align: center;">
-      <strong>Email:</strong> <a href="mailto:Ventum-Dynamix@business.com">Ventum-Dynamix@business.com</a>
-    </p>
-    <p style="text-align: center;"><strong>Telefon:</strong>%</p>
+    <p style="text-align: center;"><strong>Email:</strong> <a href="mailto:Ventum-Dynamix@business.com">Ventum-Dynamix@business.com</a></p>
+    <p style="text-align: center;"><strong>Telefon:</strong> +49 123 456789</p>
   </section>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Ventum Dynamix. Alle Rechte vorbehalten.
+    <p>&copy; 2025 Ventum Dynamix. Alle Rechte vorbehalten.</p>
+    <div>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
   </footer>
 
+  <!-- Script -->
   <script>
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
-
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    // Menü schließen beim Klick auf Link (mobile)
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
-    });
-
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('click', () => {
-        if(card.classList.contains('active')){
-          card.classList.remove('active');
-        } else {
-          document.querySelectorAll('.product-card.active').forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
-        }
-      });
-    });
-
-    // Klick außerhalb schließt aktive Overlays
-    document.body.addEventListener('click', (e) => {
-      if (!e.target.closest('.product-card')) {
-        document.querySelectorAll('.product-card.active').forEach(c => c.classList.remove('active'));
-      }
-    });
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    document.querySelectorAll('#nav-menu a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
+    document.querySelectorAll('.product-card').forEach(card => card.addEventListener('click', () => card.classList.toggle('active')));
   </script>
 </body>
 </html>
