@@ -169,6 +169,38 @@
       nav ul.active {display: flex;}
       .nav-toggle {display: inline-block;}
     }
+    /* Vision */
+.vision-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vision-content img {
+  max-width: 420px;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+#vision-text {
+  flex: 1;
+  max-width: 600px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 768px) {
+  .vision-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  #vision-text {max-width: 100%;}
+}
+
   </style>
 </head>
 <body>
@@ -257,16 +289,29 @@ Seit fast einem Jahr forschen und entwickeln wir an dieser Idee. Unser Team best
     </div>
   </section>
 
-  <!-- Vision -->
-  <section id="vision">
-    <h2 class="section-title">Unsere Vision</h2>
-    <div id="vision">
-      <img src="vision.png" alt="Unsere Vision" />
-      <div id="vision-text"><p>Wir bei Ventum Dynamix sehen eine Zukunft, in der Energie dort entsteht, wo sie gebraucht wird – intelligent, nachhaltig und ohne zusätzliche Belastung für unsere Umwelt.
-Unsere Vision ist es, die Kraft des Fahrtwinds in eine neue Quelle grüner Energie zu verwandeln. Straßen und Bahnstrecken sollen nicht länger nur Verkehrswege sein, sondern zugleich Orte der Energiegewinnung. So entsteht ein Netzwerk, das Mobilität und Nachhaltigkeit miteinander verbindet.
-Wir möchten mit unserer Technologie einen Beitrag zu einer Welt leisten, in der bestehende Infrastrukturen effizienter genutzt werden und erneuerbare Energien selbstverständlich zum Alltag gehören.</p></div>
+<!-- Vision -->
+<section id="vision">
+  <h2 class="section-title">Unsere Vision</h2>
+  <div class="vision-content">
+    <div id="vision-text">
+      <p>
+        Wir bei Ventum Dynamix sehen eine Zukunft, in der Energie dort entsteht,
+        wo sie gebraucht wird – intelligent, nachhaltig und ohne zusätzliche
+        Belastung für unsere Umwelt. <br><br>
+        Unsere Vision ist es, die Kraft des Fahrtwinds in eine neue Quelle
+        grüner Energie zu verwandeln. Straßen und Bahnstrecken sollen nicht
+        länger nur Verkehrswege sein, sondern zugleich Orte der Energiegewinnung.
+        So entsteht ein Netzwerk, das Mobilität und Nachhaltigkeit miteinander
+        verbindet. <br><br>
+        Wir möchten mit unserer Technologie einen Beitrag zu einer Welt leisten,
+        in der bestehende Infrastrukturen effizienter genutzt werden und
+        erneuerbare Energien selbstverständlich zum Alltag gehören.
+      </p>
     </div>
-  </section>
+    <img src="vision.png" alt="Unsere Vision" />
+  </div>
+</section>
+
 
   <!-- Kontakt -->
   <section id="contact">
